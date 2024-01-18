@@ -1,0 +1,97 @@
+*****Here My Assignment 5*****
+backend part:-
+============
+Here first, I make a directory name "backend" then different folder likes:- 
+server.js 
+config.js 
+models:-user_m.js, sales_m.js
+routes:-user_r.js, sales_r.js
+
+then, I install some packages:-
+-----------------------------
+1) "bcryptjs": bcryptjs is a JavaScript library used primarily for hashing passwords. It employs the bcrypt hashing algorithm to securely hash passwords, making them difficult to reverse engineer or decrypt.
+
+2) "cors": cors (Cross-Origin Resource Sharing) is a node.js package used to enable CORS in a Node.js Express application. CORS is a security feature implemented in web browsers that controls access to resources from different origins. It allows or restricts cross-origin HTTP requests, helping to prevent cross-site request forgery and other security issues.
+
+3) "express":Express is a popular web application framework for Node.js. It simplifies the process of building web applications and APIs by providing a robust set of features and tools. Here's a basic example demonstrating how Express might be used to create a simple server:
+
+4) "jsonwebtoken":jsonwebtoken is a popular library used in Node.js to generate and verify JSON Web Tokens (JWTs). JWTs are a compact, URL-safe means of representing claims to be transferred between two parties. They are commonly used for authentication and information exchange in web development.
+
+5) "mongoose":Mongoose is a popular Object Data Modeling (ODM) library for Node.js and MongoDB. It provides a straightforward schema-based solution to model your application data and interact with MongoDB databases.
+
+6) "nodemon":nodemon is a utility for Node.js that monitors changes in your Node.js application files and automatically restarts the server when changes are detected. It's particularly useful during the development phase as it saves you from manually stopping and restarting the server every time you make changes to your code.
+
+APIs:-
+----
+1) router.post("/login")---The server-side route '/login' handles user authentication, verifying credentials, and generating a JWT token upon successful login.
+
+2) router.post("/register")---The server-side route '/register' handles user registration, checking for existing users, hashing passwords, and saving new users to the database.
+
+3) router.post("/addsales")---The server-side route '/addsales' handles the addition of sales data, validating and saving entries to a database, returning success or error responses.
+
+4) router.get("/topfive")---The server-side route '/topfive' retrieves the top 5 sales entries from the database, sorted by amount, and sends them as a JSON response.
+
+5) router.get("/revenue")---The server-side route '/revenue' calculates and returns the total revenue for the current day using MongoDB aggregation based on sales entries.
+
+
+async/await syntax:-
+------------------
+This version of the code uses async/await to handle promises and control the flow of execution. The try/catch blocks are used for error handling, making the code more structured and easier to follow.
+
+models folder:-
+-------------
+'models' folder typically houses data models or schemas that define the structure and properties of the data being used or exchanged within the API. These models serve as blueprints, outlining how information should be structured, validated, and processed. By organizing these models within a dedicated folder, we can maintain a clear separation of concerns, making it easier to manage, reference, and reuse these data structures across different parts of the API, enhancing consistency and scalability in the development process.
+here i made two, one for login and register.... second one for managing product quanity and its amount.
+
+routes folder:-
+-------------
+'routes' folder is a common organizational structure in API development, especially in frameworks like Express.js for Node.js. It helps structure API endpoints by grouping related functionalities together.
+Inside the 'routes' folder, different files or modules often represent distinct parts of the API, such as user-related routes, product routes, authentication routes, etc. Each file typically handles specific HTTP requests (like GET, POST, PUT, DELETE) for that particular feature or resource.
+
+middleware function:-
+-------------------
+Middleware functions are functions that have access to the request object (req), the response object (res), and the next function in the application’s request-response cycle. The next function is a function in the Express router which, when invoked, executes the middleware succeeding the current middleware.
+
+config.js file use:-
+------------------
+'config' folder or js file often stores configuration settings that the API needs to function properly. This folder typically contains files or modules that hold various parameters such as database connections, environment-specific settings, authentication keys, or any other configurations crucial for the API's behavior. 
+
+server.js file use:-
+------------------
+here I imported all the files and give a method to connect with database .connection and .on
+and gave a port no. of 4000 to start the server
+
+*******************************************************************************************
+*******************************************************************************************
+
+frontend part:-
+=============
+First of all, i created a folder name "frontend" then, I downloaded my react app by "npx create-react-app webapp" then deleted useless file like webvital, index.css, logos, app.test etc
+
+file imported:-
+-------------
+1) I imported the bootstrap link from bootstrap 5 of css and javascript and paste it in public folder (index.html).
+2) I imported google font link by selecting the Poppins with different font weight and I gave font-family of 'Poppins', sans-serif to my universal selector by which all the text will be of same font-family.
+3) I imported cdn link of font awesome and then I used many different font icons in different places.
+
+components:-
+----------
+Here I made 6 component which will render in my app.js file
+1) addsales:- the function handleSubmit is triggered when the form is submitted. The e.preventDefault() prevents the default form submission behavior, which would cause a page reload. Instead, it allows the asynchronous handling of form data submission to a server using Axios.
+
+2) login :- The "Login" React component handles user authentication by making a POST request to a server endpoint using Axios. It captures user input for email and password, displays a login form, and redirects to the '/addsales' route upon successful authentication. Error handling includes displaying toast messages for success and error scenarios.
+
+3) nav:- The "Nav" React component creates a responsive navigation bar for a sales application. It dynamically renders links based on user authentication status, allowing access to features like adding sales, viewing revenue, and top sales. The component also handles user logout, removing authentication tokens.
+
+4) register:- The "Register" React component facilitates user registration by capturing and submitting user details to a server endpoint using Axios. The form includes fields for first name, last name, email, and password. Upon successful registration, it displays a success toast message, and in case of an error, it shows an error toast with a corresponding message 
+
+5) revenue:-  The "Revenue" React component fetches and displays the total revenue from a server using Axios. It utilizes the useEffect hook to make an authenticated API call upon component mount, fetching the total revenue and rendering it in a formatted message. The component incorporates user authentication with a bearer token retrieved from local storage.
+
+6) top5:- The "Topfive" React component retrieves and displays the top 5 sales data from a server using Axios. Utilizing the useEffect hook, it makes an authenticated API call upon component mount and updates the state with the fetched data. The rendered table showcases sales details, including sales ID, product name, quantity, and sale amount, providing insights into the top-performing sales.
+
+
+routing:-
+-------
+Here, I route all the components in routes tag and enclosed it Router tag and before enclosing it all I render my navbar.
+
+Then for run it by a command of npm run start then it will run. and by one by one diferent navlinks, we can go to respective pages links addsales, login, register, revenue, top5
